@@ -8,9 +8,9 @@
       </i>
     </div>
   <% end %>
+</div>
 
   <%= simple_form_for [ @game, @buzz ], remote: true do |f| %>
     <%= f.input :buzzed %>
   <% end %>
-  <button id="buzzer">buzz</button>
-</div>
+<button id="buzzer">buzz</button>

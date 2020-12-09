@@ -6,6 +6,10 @@ class BuzzsController < ApplicationController
     @buzz.game = @game
     @buzz.user = current_user
     if @buzz.save
+      GameChannel.broadcast_to(
+        @game,
+        render_to_string(partial: "buzz", locals: { buzz: @buzz })
+      )
       redirect_to game_path(@game, anchor: "buzz-#{@buzz.id}")
     else
       render "games/show"
