@@ -4,7 +4,7 @@
     <div class="buzz-container" id="buzz-<%= buzz.id %>">
       <i class="author">
         <span><%= buzz.user.nickname %></span>
-        <small><%= buzz.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+        <small><%= buzz.created_at.strftime("%k:%M:%S") %></small>
       </i>
     </div>
   <% end %>
