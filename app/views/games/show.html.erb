@@ -1,4 +1,4 @@
-<h1><%= @game.number %></h1>
+<h1><%= @game.id %></h1>
 <div id="buzzs" data-game-id="<%= @game.id %>">
   <% @game.buzzs.each do |buzz| %>
     <div class="buzz-container" id="buzz-<%= buzz.id %>">
