@@ -1,0 +1,16 @@
+<h1><%= @game.number %></h1>
+<div id="buzzs" data-game-id="<%= @game.id %>">
+  <% @game.buzzs.each do |buzz| %>
+    <div class="buzz-container" id="buzz-<%= buzz.id %>">
+      <i class="author">
+        <span><%= buzz.user.nickname %></span>
+        <small><%= buzz.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+      </i>
+    </div>
+  <% end %>
+
+  <%= simple_form_for [ @game, @buzz ], remote: true do |f| %>
+    <%= f.input :buzzed %>
+  <% end %>
+  <button id="buzzer">buzz</button>
+</div>
