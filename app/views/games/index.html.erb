@@ -1,0 +1,7 @@
+<h1>List of games</h1>
+
+<% @games.each do |game| %>
+  <ul>
+    <li><%= link_to "Game n°#{game.id}", game_path(game) %>
+  </ul>
+<% end %>
