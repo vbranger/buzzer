@@ -16,6 +16,12 @@ class BuzzsController < ApplicationController
     end
   end
 
+  def clearbuzzs
+    @buzzs = Buzz.destroy_all
+    @game = Game.find(params[:game_id])
+    redirect_to game_path(@game)
+  end
+
   private
 
   def buzzs_params
