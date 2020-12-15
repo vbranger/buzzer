@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :games, only: [:show, :create, :index] do
+  resources :games, only: [:show, :create, :index, :destroy] do
     resources :buzzs, only: :create
   end
   get 'clearbuzzs', to: 'buzzs#clearbuzzs'
