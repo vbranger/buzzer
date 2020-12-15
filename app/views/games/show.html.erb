@@ -7,7 +7,9 @@
     <%= simple_form_for [ @game, @buzz ], remote: true do |f| %>
       <%= f.input :buzzed, as: :hidden %>
     <% end %>
-    <div id="buzzer"><p>buzz</p></div>
+    <div class="buttons">
+      <div id="buzzer"><p>buzz</p></div>
+    </div>
 
   <% elsif current_user.id == @game.user_id %>
     <p>host</p>
