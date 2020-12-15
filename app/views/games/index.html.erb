@@ -1,7 +1,8 @@
-<h1>List of games</h1>
-
-<% @games.each do |game| %>
-  <ul>
-    <li><%= link_to "Game n°#{game.id}", game_path(game) %> - créée par <%= User.find(game.user_id).nickname %></li>
-  </ul>
-<% end %>
+<div class="container">
+  <h1 class="text-center my-5">List of games</h1>
+  <% @games.each do |game| %>
+    <ul class="list-group">
+      <li class="list-group-item"><%= link_to "Game n°#{game.id}", game_path(game) %> - créée par <%= User.find(game.user_id).nickname %></li>
+    </ul>
+  <% end %>
+</div>
