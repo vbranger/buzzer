@@ -2,6 +2,6 @@
 
 <% @games.each do |game| %>
   <ul>
-    <li><%= link_to "Game n°#{game.id}", game_path(game) %>
+    <li><%= link_to "Game n°#{game.id}", game_path(game) %> - créée par <%= User.find(game.user_id).nickname %></li>
   </ul>
 <% end %>
