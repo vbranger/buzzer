@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @buzz = Buzz.new
+
   end
 
   def create
@@ -11,6 +12,10 @@ class GamesController < ApplicationController
     @game.save
 
     redirect_to game_path(@game)
+  end
+
+  def index
+    @games = Game.all
   end
 
   private
