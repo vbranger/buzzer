@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @buzz = Buzz.new
+    @buzzed = buzzed?   
   end
 
   def create
@@ -36,5 +37,14 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:number, :user_id)
+  end
+
+  def buzzed?
+    if Buzz.count == 0
+      return false
+    else
+      return true
+    end
+    
   end
 end
