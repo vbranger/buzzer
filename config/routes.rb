@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     resources :buzzs, only: :create
   end
   get 'clearbuzzs', to: 'buzzs#clearbuzzs'
-
+  get 'create_new_game', to: 'games#create_new_game'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

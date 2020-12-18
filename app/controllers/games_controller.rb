@@ -13,6 +13,15 @@ class GamesController < ApplicationController
     redirect_to game_path(@game)
   end
 
+  def create_new_game
+    @game = Game.new
+    @game.user_id = current_user.id
+    @game.number = @game.id
+    @game.save
+
+    redirect_to game_path(@game)
+  end
+
   def index
     @games = Game.all
   end
