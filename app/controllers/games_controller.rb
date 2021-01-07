@@ -2,18 +2,10 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @buzz = Buzz.new
+    @buzzed = buzzed?   
   end
 
   def create
-    @game = Game.new
-    @game.user_id = current_user.id
-    @game.number = @game.id
-    @game.save
-
-    redirect_to game_path(@game)
-  end
-
-  def create_new_game
     @game = Game.new
     @game.user_id = current_user.id
     @game.number = @game.id
@@ -32,9 +24,23 @@ class GamesController < ApplicationController
     redirect_to root_path
   end
 
+  def find
+    @game = Game.find(params[:search])
+    redirect_to game_path(@game)
+  end
+
   private
 
   def game_params
     params.require(:game).permit(:number, :user_id)
+  end
+
+  def buzzed?
+    if Buzz.count == 0
+      return false
+    else
+      return true
+    end
+    
   end
 end
