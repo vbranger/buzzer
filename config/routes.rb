@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  get 'games/show', to: 'games#show'
   resources :games, only: [:show, :create, :index, :destroy] do
     resources :buzzs, only: :create
   end
