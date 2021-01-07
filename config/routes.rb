@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   get 'clearbuzzs', to: 'buzzs#clearbuzzs'
   get 'search_game', to: 'games#search'
   post 'search_game', to: 'games#find'
-  get 'find', to:'games#find'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
