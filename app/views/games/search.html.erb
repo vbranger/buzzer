@@ -1,0 +1,7 @@
+<div class="container pt-5 col-6">
+  <%= form_tag :url => find_path, method: :post do %>
+    <%= label_tag(:search, "Numéro partie:") %>
+    <%= text_field_tag(:search, '') %>
+    <%= submit_tag 'Search'  %>
+  <% end %>
+</div>

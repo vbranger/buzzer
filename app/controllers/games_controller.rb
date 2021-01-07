@@ -14,15 +14,6 @@ class GamesController < ApplicationController
     redirect_to game_path(@game)
   end
 
-  def create_new_game
-    @game = Game.new
-    @game.user_id = current_user.id
-    @game.number = @game.id
-    @game.save
-
-    redirect_to game_path(@game)
-  end
-
   def index
     @games = Game.all
   end
@@ -31,6 +22,11 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @game.destroy
     redirect_to root_path
+  end
+
+  def find
+    @game = Game.find(params[:search])
+    redirect_to game_path(@game)
   end
 
   private
