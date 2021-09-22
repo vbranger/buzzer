@@ -1,4 +1,3 @@
-import { data } from "jquery";
 import consumer from "./consumer";
 
 const initGameCable = () => {
