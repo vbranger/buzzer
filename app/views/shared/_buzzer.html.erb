@@ -1,0 +1,11 @@
+<div id="buzzer_component" data-game-id="<%= game.id %>" >
+  <div class="buttons">
+      <div id="buzzer"
+        class="<%= 'buzzed' if buzzed %>"
+        data-controller="buzzer" 
+        data-action="click->buzzer#buzz">
+        <p>buzz<%= 'ed' if buzzed %></p>
+      </div>
+  </div>
+</div>
+

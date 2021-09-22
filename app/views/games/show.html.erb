@@ -1,20 +1,15 @@
-<div class="container py-3">
+<div class="container py-3" id="show" data-game-id="<%= @game.id %>">
   <h2>Numéro partie : <%= @game.id %></h2>
-
+  <p>Players: <%= @players %></p>
   <% if current_user.id != @game.user_id %>
     <p>player</p>
 
     <%= simple_form_for [ @game, @buzz ], remote: true do |f| %>
       <%= f.input :buzzed, as: :hidden %>
     <% end %>
-    
-    <% if @buzzed %>
-      <p>buzzed</p>
-    <% else %>
-    <div class="buttons">
-      <div id="buzzer"><p>buzz</p></div>
+    <div id="buzzer_container">
+      <%= render partial: 'shared/buzzer', locals: { game: @game, buzzed: @buzzed} %>
     </div>
-    <% end %>
     
 
   <% elsif current_user.id == @game.user_id %>

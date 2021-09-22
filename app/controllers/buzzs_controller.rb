@@ -10,7 +10,19 @@ class BuzzsController < ApplicationController
         @game,
         render_to_string(partial: "buzz", locals: { buzz: @buzz })
       )
-      redirect_to game_path(@game, anchor: "buzz-#{@buzz.id}")
+      BuzzerChannel.broadcast_to(
+        @game,
+        render_to_string(
+          partial: "shared/buzzer", 
+          locals: { 
+            game: @game, 
+            buzzed: true, 
+            buzzer: 'locked', 
+            first_user_id: current_user.id 
+          }
+        )
+      )
+      # redirect_to game_path(@game, anchor: "buzz-#{@buzz.id}")
     else
       render "games/show"
     end
@@ -19,6 +31,12 @@ class BuzzsController < ApplicationController
   def clearbuzzs
     @buzzs = Buzz.destroy_all
     @game = Game.find(params[:game_id])
+
+    BuzzerChannel.broadcast_to(
+      @game,
+      render_to_string(partial: "shared/buzzer", locals: { game: @game, buzzed: false })
+    )
+
     redirect_to game_path(@game)
   end
 

@@ -2,7 +2,9 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @buzz = Buzz.new
-    @buzzed = buzzed?   
+    @players = ActionCable.server.connections.length
+    @buzzed = buzzed?
+    @buzzer_status = buzzed? ? 'lock' : 'open'
   end
 
   def create
