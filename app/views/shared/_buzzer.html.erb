@@ -1,10 +1,10 @@
-<div id="buzzer_component" data-game-id="<%= game.id %>" >
+<div id="buzzer_component" data-game-id="<%= game.id %>" winner-id="<%= first_user_id %>" >
   <div class="buttons">
       <div id="buzzer"
-        class="<%= 'buzzed' if buzzed %>"
+        class="<%= 'buzzed' if is_buzzed?(buzzed, first_user_id) %> <%= 'locked' if is_locked?(buzzed, first_user_id) %>"
         data-controller="buzzer" 
         data-action="click->buzzer#buzz">
-        <p>buzz<%= 'ed' if buzzed %></p>
+        <p><%= buzzer_text(buzzed, first_user_id) %></p>
       </div>
   </div>
 </div>

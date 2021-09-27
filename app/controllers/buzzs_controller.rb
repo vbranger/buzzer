@@ -12,15 +12,16 @@ class BuzzsController < ApplicationController
       )
       BuzzerChannel.broadcast_to(
         @game,
-        render_to_string(
-          partial: "shared/buzzer", 
-          locals: { 
-            game: @game, 
-            buzzed: true, 
-            buzzer: 'locked', 
-            first_user_id: current_user.id 
-          }
-        )
+        "hello"
+        # @game,
+        # render_to_string(
+        #   partial: "shared/buzzer", 
+        #   locals: { 
+        #     game: @game,
+        #     buzzed: true,
+        #     first_user_id: @buzz.user.id 
+        #   }
+        # )
       )
       # redirect_to game_path(@game, anchor: "buzz-#{@buzz.id}")
     else
@@ -34,7 +35,7 @@ class BuzzsController < ApplicationController
 
     BuzzerChannel.broadcast_to(
       @game,
-      render_to_string(partial: "shared/buzzer", locals: { game: @game, buzzed: false })
+      render_to_string(partial: "shared/buzzer", locals: { game: @game, buzzed: false, first_user_id: "" })
     )
 
     redirect_to game_path(@game)

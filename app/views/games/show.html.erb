@@ -8,7 +8,7 @@
       <%= f.input :buzzed, as: :hidden %>
     <% end %>
     <div id="buzzer_container">
-      <%= render partial: 'shared/buzzer', locals: { game: @game, buzzed: @buzzed} %>
+      <%= render partial: 'shared/buzzer', locals: { game: @game, buzzed: @buzzed, first_user_id: @game.winner_id} %>
     </div>
     
 

@@ -7,10 +7,15 @@ const initBuzzerCable = () => {
     const id = buzzer.dataset.gameId;
     consumer.subscriptions.create({ channel: "BuzzerChannel", id: id }, {
       received(data) {
-        // removing the buzzer
-        buzzerContainer.innerHTML = '';
-        // inserting a new one
-        buzzerContainer.insertAdjacentHTML('beforeend', data);
+        console.log(data)
+        
+        console.log('breaking')
+        return Turbolinks.visit(location.toString());
+        
+        // // removing the buzzer
+        // buzzerContainer.innerHTML = '';
+        // // inserting a new one
+        // buzzerContainer.insertAdjacentHTML('beforeend', data);
       },
     });
   }
