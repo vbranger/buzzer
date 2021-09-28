@@ -18,6 +18,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @game = Game.new
   end
 
   def destroy
@@ -27,8 +28,12 @@ class GamesController < ApplicationController
   end
 
   def find
-    @game = Game.find(params[:search])
-    redirect_to game_path(@game)
+    unless params[:search] == ""
+      @game = Game.find(params[:search])
+      redirect_to game_path(@game)
+    else
+      redirect_to root_path
+    end
   end
 
   private

@@ -1,9 +1,6 @@
-<div class="container py-3" id="show" data-game-id="<%= @game.id %>">
-  <h2>Numéro partie : <%= @game.id %></h2>
-  <p>Players: <%= @players %></p>
+<div class="container layout py-3" id="show" data-game-id="<%= @game.id %>">
+  <h2>Game code : <%= @game.id %></h2>
   <% if current_user.id != @game.user_id %>
-    <p>player</p>
-
     <%= simple_form_for [ @game, @buzz ], remote: true do |f| %>
       <%= f.input :buzzed, as: :hidden %>
     <% end %>
@@ -13,7 +10,6 @@
     
 
   <% elsif current_user.id == @game.user_id %>
-    <p>host</p>
     <div class="buttons">
       <%= link_to "Supprimer partie",
                   game_path(@game),
@@ -24,13 +20,11 @@
                   clearbuzzs_path(@buzzs, game_id: @game.id),
                   class: "btn btn-info my-3" %>
     </div>
-      <h4 class="text-center">Liste des buzzs</h4>
     <ol id="buzzs" class="center" data-game-id="<%= @game.id %>">
       <% @game.buzzs.each do |buzz| %>
         <li class="buzz-container" id="buzz-<%= buzz.id %>">
           <i class="author">
-            <span><%= buzz.user.nickname %></span>
-            <small><%= buzz.created_at.strftime("%k:%M:%S") %></small>
+            <span><%= buzz.user.nickname %> has buzzed.</span>
           </i>
         </li>
       <% end %>

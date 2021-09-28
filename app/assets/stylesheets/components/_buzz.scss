@@ -1,7 +1,7 @@
 #buzzer {
   border: none;
   font-size: 4rem;
-  background-color: green;
+  background-color: $green;
   height: 14rem;
   width: 14rem;
   border-radius: 50%;
@@ -19,9 +19,9 @@
 }
 
 .buzzed {
-  background-color: red !important;
+  background-color: $red !important;
 }
 
 .locked {
-  background-color: orange !important;
+  background-color: $yellow !important;
 }

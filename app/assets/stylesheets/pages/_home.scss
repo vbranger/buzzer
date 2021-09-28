@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-custom {
+  margin: 1rem;
+}
+
+a {
+  color: white !important;
+  padding: 0;
+}

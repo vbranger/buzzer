@@ -30,8 +30,8 @@ class BuzzsController < ApplicationController
   end
 
   def clearbuzzs
-    @buzzs = Buzz.destroy_all
     @game = Game.find(params[:game_id])
+    @game.buzzs.destroy_all
 
     BuzzerChannel.broadcast_to(
       @game,
