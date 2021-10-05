@@ -29,12 +29,15 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initGameCable } from '../channels/game_channel';
 import { initBuzzerCable } from '../channels/buzzer_channel';
+import { initPresenceCable } from '../channels/presence_channel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initGameCable();
   initBuzzerCable();
+  initPresenceCable();
 });
 
 import 'controllers'
+import { initPresenceChannel } from "../channels/presence_channel";
